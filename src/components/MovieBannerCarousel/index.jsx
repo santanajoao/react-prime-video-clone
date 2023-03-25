@@ -10,9 +10,10 @@ const NUMBER_OF_MOVIES_DISPLAYED = 10;
 
 export default function MovieBannerCarousel() {
   const [movies, setMovies] = useState([]);
+  const movieList = useRef(null);
+
   const { selected, setSelected, selectNext, selectPrevious } =
     useIndexSelection(MIN_SELECTION, NUMBER_OF_MOVIES_DISPLAYED);
-  const movieList = useRef(null);
 
   async function getPopularMovies() {
     const movies = await fetchPopularMovies();
@@ -25,9 +26,7 @@ export default function MovieBannerCarousel() {
   }, []);
 
   useEffect(() => {
-    movieList?.current?.scrollTo({
-      left: window.innerWidth * selected,
-    });
+    movieList?.current?.scrollTo({ left: window.innerWidth * selected });
   }, [selected]);
 
   if (movies.length === 0) {
@@ -41,12 +40,18 @@ export default function MovieBannerCarousel() {
     <div className={styles.carousel}>
       {firstIsNotSelected && (
         <button onClick={selectPrevious} className={styles.left_button}>
+          <span className="screen-readers-only">
+            Mover para o banner do filme anterior
+          </span>
           <SlArrowLeft className={styles.left_icon} />
         </button>
       )}
 
       {lastIsNotSelected && (
         <button onClick={selectNext} className={styles.right_button}>
+          <span className="screen-readers-only">
+            Mover para o banner do próximo filme
+          </span>
           <SlArrowRight className={styles.right_icon} />
         </button>
       )}

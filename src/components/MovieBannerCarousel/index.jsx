@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { SlArrowLeft, SlArrowRight } from 'react-icons/sl';
+import useIndexSelection from '../../hooks/useIndexSelection';
 import styles from './style.module.css';
 
 // componentizar os elementos
@@ -7,7 +8,8 @@ const NUMBER_OF_MOVIES_DISPLAYED = 10;
 
 export default function MovieBannerCarousel() {
   const [movies, setMovies] = useState([]);
-  const [selected, setSelected] = useState(0);
+  const { selected, setSelected, selectNext, selectPrevious } =
+    useIndexSelection(0, NUMBER_OF_MOVIES_DISPLAYED);
 
   async function getPopularMovies() {
     const response = await fetch(
@@ -33,19 +35,13 @@ export default function MovieBannerCarousel() {
   return (
     <div className={styles.carousel}>
       {firstIsNotSelected && (
-        <button
-          onClick={() => setSelected(selected && selected - 1)}
-          className={styles.left_button}
-        >
+        <button onClick={selectPrevious} className={styles.left_button}>
           <SlArrowLeft className={styles.left_icon} />
         </button>
       )}
 
       {lastIsNotSelected && (
-        <button
-          onClick={() => setSelected(selected < 9 ? selected + 1 : selected)}
-          className={styles.right_button}
-        >
+        <button onClick={selectNext} className={styles.right_button}>
           <SlArrowRight className={styles.right_icon} />
         </button>
       )}

@@ -1,16 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { SlArrowLeft, SlArrowRight } from 'react-icons/sl';
 import useIndexSelection from '../../hooks/useIndexSelection';
 import { fetchPopularMovies } from '../../services/movies';
 import styles from './style.module.css';
 
 // componentizar os elementos
+const MIN_SELECTION = 0;
 const NUMBER_OF_MOVIES_DISPLAYED = 10;
 
 export default function MovieBannerCarousel() {
   const [movies, setMovies] = useState([]);
   const { selected, setSelected, selectNext, selectPrevious } =
-    useIndexSelection(0, NUMBER_OF_MOVIES_DISPLAYED);
+    useIndexSelection(MIN_SELECTION, NUMBER_OF_MOVIES_DISPLAYED);
+  const movieList = useRef(null);
 
   async function getPopularMovies() {
     const movies = await fetchPopularMovies();
@@ -22,12 +24,17 @@ export default function MovieBannerCarousel() {
     getPopularMovies();
   }, []);
 
+  useEffect(() => {
+    movieList?.current?.scrollTo({
+      left: window.innerWidth * selected,
+    });
+  }, [selected]);
+
   if (movies.length === 0) {
     return null;
   }
 
-  const carouselMargin = `-${selected * 100}%`;
-  const firstIsNotSelected = selected !== 0;
+  const firstIsNotSelected = selected !== MIN_SELECTION;
   const lastIsNotSelected = selected !== NUMBER_OF_MOVIES_DISPLAYED - 1;
 
   return (
@@ -58,11 +65,10 @@ export default function MovieBannerCarousel() {
         ))}
       </div>
 
-      <ol className={styles.movie_list}>
+      <ol className={styles.movie_list} ref={movieList}>
         {movies.map((movie) => (
           <li key={movie.id}>
             <img
-              style={{ marginLeft: carouselMargin }}
               src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
               loading="lazy"
               className={styles.movie_image}

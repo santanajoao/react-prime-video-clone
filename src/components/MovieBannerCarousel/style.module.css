@@ -74,6 +74,7 @@
 .movie_list {
   width: 100%;
   display: flex;
+  scroll-behavior: smooth;
   overflow: hidden;
 }
 
@@ -82,6 +83,4 @@
   height: 100%;
   object-fit: cover;
   object-position: 0 13%;
-  margin-left: 0;
-  transition: margin-left 500ms;
 }

@@ -78,6 +78,10 @@
   overflow: hidden;
 }
 
+.movie_list > li {
+  list-style: none;
+}
+
 .movie_image {
   width: 100vw;
   height: 100%;

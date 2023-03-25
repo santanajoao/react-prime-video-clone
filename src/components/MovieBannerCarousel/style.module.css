@@ -54,7 +54,7 @@
   bottom: 0;
   display: flex;
   gap: 6px;
-  margin-bottom: 1rem;
+  padding: 1rem;
   z-index: 2;
 }
 

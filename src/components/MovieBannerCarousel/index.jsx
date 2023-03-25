@@ -73,7 +73,6 @@ export default function MovieBannerCarousel() {
             <a href="#">
               <img
                 src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
-                loading="lazy"
                 className={styles.movie_image}
                 alt={movie.title}
               />

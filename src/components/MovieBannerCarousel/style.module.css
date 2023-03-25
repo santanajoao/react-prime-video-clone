@@ -1,0 +1,87 @@
+.carousel {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 20vw;
+}
+
+.left_button,
+.right_button {
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  height: 100%;
+  cursor: pointer;
+  padding: 0 1rem;
+}
+
+.left_button {
+  left: 0;
+}
+
+.right_button {
+  right: 0;
+}
+
+.left_button:hover {
+  background-image: linear-gradient(
+    to right,
+    rgb(0, 0, 0, 0.5),
+    rgb(255, 255, 255, 0.3)
+  );
+}
+
+.right_button:hover {
+  background-image: linear-gradient(
+    to left,
+    rgb(0, 0, 0, 0.5),
+    rgb(255, 255, 255, 0.3)
+  );
+}
+
+.left_button > .left_icon,
+.right_button > .right_icon {
+  color: #fff;
+  font-size: 3.5rem;
+}
+
+.radios_wrapper {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  gap: 6px;
+  margin-bottom: 1rem;
+}
+
+.radio {
+  all: unset;
+  border-radius: 50%;
+  cursor: pointer;
+  width: 1.4rem;
+  height: 1.4rem;
+  border: none;
+  background-color: rgb(255, 255, 255, 0.35);
+  box-shadow: 0.1rem 0.1rem 0.4rem rgba(0, 0, 0, 0.4);
+}
+
+.radio:checked {
+  background-color: rgb(255, 255, 255, 0.9);
+}
+
+.movie_list {
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+}
+
+.movie_image {
+  width: 100vw;
+  height: 100%;
+  object-fit: cover;
+  object-position: 0 13%;
+  margin-left: 0;
+  transition: margin-left 500ms;
+}

@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { SlArrowLeft, SlArrowRight } from 'react-icons/sl';
 import useIndexSelection from '../../hooks/useIndexSelection';
 import { fetchPopularMovies } from '../../services/movies';
+import LabelAndRadio from '../LabelAndRadio';
 import styles from './style.module.css';
 
 // componentizar os elementos
@@ -58,33 +59,30 @@ export default function MovieBannerCarousel() {
 
       <div className={styles.radios_wrapper}>
         {movies.map((_, index) => (
-          <>
-            <label htmlFor={`radio-${index}`} className="screen-readers-only">
-              {`Selecionar o ${index + 1}° banner de filme`}
-            </label>
-            <input
-              checked={selected === index}
-              key={`radio-${index}`}
-              id={`radio-${index}`}
-              value={index}
-              type="radio"
-              onChange={() => setSelected(index)}
-              name="carousel-selection"
-              className={styles.radio}
-            />
-          </>
+          <LabelAndRadio
+            key={`label-radio-${index}`}
+            value={index}
+            onChange={() => setSelected(index)}
+            name="carousel-selection"
+            label={`Selecionar o ${index + 1}° banner de filme`}
+            id={`radio-${index}`}
+            className={styles.radio}
+            checked={selected === index}
+          />
         ))}
       </div>
 
       <ol className={styles.movie_list} ref={movieList}>
         {movies.map((movie) => (
           <li key={movie.id}>
-            <img
-              src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
-              loading="lazy"
-              className={styles.movie_image}
-              alt={movie.title}
-            />
+            <a href="#">
+              <img
+                src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
+                loading="lazy"
+                className={styles.movie_image}
+                alt={movie.title}
+              />
+            </a>
           </li>
         ))}
       </ol>

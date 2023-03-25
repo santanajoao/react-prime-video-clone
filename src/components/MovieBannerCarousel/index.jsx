@@ -57,16 +57,22 @@ export default function MovieBannerCarousel() {
       )}
 
       <div className={styles.radios_wrapper}>
-        {movies.map((movie, index) => (
-          <input
-            checked={selected === index}
-            key={`radio-${movie.id}`}
-            value={index}
-            type="radio"
-            onChange={() => setSelected(index)}
-            name="carousel-selection"
-            className={styles.radio}
-          />
+        {movies.map((_, index) => (
+          <>
+            <label htmlFor={`radio-${index}`} className="screen-readers-only">
+              {`Selecionar o ${index + 1}° banner de filme`}
+            </label>
+            <input
+              checked={selected === index}
+              key={`radio-${index}`}
+              id={`radio-${index}`}
+              value={index}
+              type="radio"
+              onChange={() => setSelected(index)}
+              name="carousel-selection"
+              className={styles.radio}
+            />
+          </>
         ))}
       </div>
 

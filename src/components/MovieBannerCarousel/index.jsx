@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { SlArrowLeft, SlArrowRight } from 'react-icons/sl';
 import useIndexSelection from '../../hooks/useIndexSelection';
+import { fetchPopularMovies } from '../../services/movies';
 import styles from './style.module.css';
 
 // componentizar os elementos
@@ -12,11 +13,8 @@ export default function MovieBannerCarousel() {
     useIndexSelection(0, NUMBER_OF_MOVIES_DISPLAYED);
 
   async function getPopularMovies() {
-    const response = await fetch(
-      'https://api.themoviedb.org/3/discover/movie?api_key=8427e7de4210382e41fa0812d7eaf4c7&language=pt-BR&region=BR&sort_by=popularity.desc&include_adult=true&include_video=true&page=1&with_watch_monetization_types=flatrate',
-    );
-    const { results } = await response.json();
-    const nFirstMostPopular = results.splice(0, NUMBER_OF_MOVIES_DISPLAYED);
+    const movies = await fetchPopularMovies();
+    const nFirstMostPopular = movies.splice(0, NUMBER_OF_MOVIES_DISPLAYED);
     setMovies(nFirstMostPopular);
   }
 

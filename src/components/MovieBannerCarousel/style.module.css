@@ -16,6 +16,7 @@
   height: 100%;
   cursor: pointer;
   padding: 0 1rem;
+  z-index: 2;
 }
 
 .left_button {
@@ -54,6 +55,7 @@
   display: flex;
   gap: 6px;
   margin-bottom: 1rem;
+  z-index: 2;
 }
 
 .radio {
@@ -74,12 +76,13 @@
 .movie_list {
   width: 100%;
   display: flex;
-  scroll-behavior: smooth;
   overflow: hidden;
 }
 
 .movie_list > li {
   list-style: none;
+  transform: translate(0);
+  transition: transform 500ms;
 }
 
 .movie_image {

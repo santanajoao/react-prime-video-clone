@@ -11,8 +11,6 @@ const NUMBER_OF_MOVIES_DISPLAYED = 10;
 
 export default function MovieBannerCarousel() {
   const [movies, setMovies] = useState([]);
-  const movieList = useRef(null);
-
   const { selected, setSelected, selectNext, selectPrevious } =
     useIndexSelection(MIN_SELECTION, NUMBER_OF_MOVIES_DISPLAYED);
 
@@ -26,16 +24,13 @@ export default function MovieBannerCarousel() {
     getPopularMovies();
   }, []);
 
-  useEffect(() => {
-    movieList?.current?.scrollTo({ left: window.innerWidth * selected });
-  }, [selected]);
-
   if (movies.length === 0) {
     return null;
   }
 
   const firstIsNotSelected = selected !== MIN_SELECTION;
   const lastIsNotSelected = selected !== NUMBER_OF_MOVIES_DISPLAYED - 1;
+  const movieStyle = `translate(-${selected * 100}%)`;
 
   return (
     <div className={styles.carousel}>
@@ -72,9 +67,9 @@ export default function MovieBannerCarousel() {
         ))}
       </div>
 
-      <ol className={styles.movie_list} ref={movieList}>
+      <ol className={styles.movie_list}>
         {movies.map((movie) => (
-          <li key={movie.id}>
+          <li key={movie.id} style={{ transform: movieStyle }}>
             <a href="#">
               <img
                 src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}

@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { SlArrowLeft, SlArrowRight } from 'react-icons/sl';
 import styles from './style.module.css';
 
-const numberOfMoviesDisplayed = 10;
+// componentizar os elementos
+const NUMBER_OF_MOVIES_DISPLAYED = 10;
 
 export default function MovieBannerCarousel() {
   const [movies, setMovies] = useState([]);
@@ -13,7 +14,7 @@ export default function MovieBannerCarousel() {
       'https://api.themoviedb.org/3/discover/movie?api_key=8427e7de4210382e41fa0812d7eaf4c7&language=pt-BR&region=BR&sort_by=popularity.desc&include_adult=true&include_video=true&page=1&with_watch_monetization_types=flatrate',
     );
     const { results } = await response.json();
-    const nFirstMostPopular = results.splice(0, numberOfMoviesDisplayed);
+    const nFirstMostPopular = results.splice(0, NUMBER_OF_MOVIES_DISPLAYED);
     setMovies(nFirstMostPopular);
   }
 
@@ -26,21 +27,28 @@ export default function MovieBannerCarousel() {
   }
 
   const carouselMargin = `-${selected * 100}%`;
+  const firstIsNotSelected = selected !== 0;
+  const lastIsNotSelected = selected !== NUMBER_OF_MOVIES_DISPLAYED - 1;
 
   return (
     <div className={styles.carousel}>
-      <button
-        onClick={() => setSelected(selected && selected - 1)}
-        className={styles.left_button}
-      >
-        <SlArrowLeft className={styles.left_icon} />
-      </button>
-      <button
-        onClick={() => setSelected(selected < 9 ? selected + 1 : selected)}
-        className={styles.right_button}
-      >
-        <SlArrowRight className={styles.right_icon} />
-      </button>
+      {firstIsNotSelected && (
+        <button
+          onClick={() => setSelected(selected && selected - 1)}
+          className={styles.left_button}
+        >
+          <SlArrowLeft className={styles.left_icon} />
+        </button>
+      )}
+
+      {lastIsNotSelected && (
+        <button
+          onClick={() => setSelected(selected < 9 ? selected + 1 : selected)}
+          className={styles.right_button}
+        >
+          <SlArrowRight className={styles.right_icon} />
+        </button>
+      )}
 
       <div className={styles.radios_wrapper}>
         {movies.map((movie, index) => (

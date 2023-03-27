@@ -10,6 +10,7 @@
 
 .left_button,
 .right_button {
+  position: relative;
   background-color: transparent;
   border: none;
   position: absolute;
@@ -17,6 +18,7 @@
   cursor: pointer;
   padding: 0 1rem;
   z-index: 2;
+  filter: drop-shadow(0 0.2rem 0.4rem rgb(0, 0, 0));
 }
 
 .left_button {
@@ -27,20 +29,39 @@
   right: 0;
 }
 
-.left_button:hover {
+.left_button::after,
+.right_button::after {
+  content: '';
+  height: 100%;
+  width: 100%;
+  display: block;
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 400ms;
+}
+
+.left_button::after {
   background-image: linear-gradient(
     to right,
-    rgb(0, 0, 0, 0.5),
-    rgb(255, 255, 255, 0.3)
+    rgb(0, 0, 0, 0.2) 40%,
+    rgb(255, 255, 255, 0.05),
+    rgb(255, 255, 255, 0)
   );
 }
 
-.right_button:hover {
+.right_button::after {
   background-image: linear-gradient(
     to left,
-    rgb(0, 0, 0, 0.5),
-    rgb(255, 255, 255, 0.3)
+    rgb(0, 0, 0, 0.2) 40%,
+    rgb(255, 255, 255, 0.05),
+    rgb(255, 255, 255, 0)
   );
+}
+
+.right_button:hover::after,
+.left_button:hover::after {
+  opacity: 1;
 }
 
 .left_button > .left_icon,

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import useIndexSelection from '../../hooks/useIndexSelection';
 import { fetchPopularMovies } from '../../services/movies';
-import LabelAndRadio from '../LabelAndRadio';
+import LabelAndRadio from './LabelAndRadio';
 import styles from './style.module.css';
 import ArrowButton from '../ArrowButton';
 
@@ -24,9 +24,7 @@ export default function MovieBannerCarousel() {
     getPopularMovies();
   }, []);
 
-  if (movies.length === 0) {
-    return null;
-  }
+  if (movies.length === 0) return null;
 
   const firstIsNotSelected = selected !== MIN_SELECTION;
   const lastIsNotSelected = selected !== NUMBER_OF_MOVIES_DISPLAYED - 1;

@@ -3,6 +3,7 @@ import CategorySection from './components/CategorySection';
 import Header from './components/Header';
 import MovieBannerCarousel from './components/MovieBannerCarousel';
 import styles from './App.module.css';
+import Footer from './components/Footer';
 
 export default function App() {
   return (
@@ -12,6 +13,7 @@ export default function App() {
         <MovieBannerCarousel />
         <CategorySection />
       </main>
+      <Footer />
     </div>
   );
 }

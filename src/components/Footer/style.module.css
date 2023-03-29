@@ -1,0 +1,44 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem;
+}
+
+.logo {
+  height: 3.2rem;
+}
+
+.nav_and_copyright {
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.ancor_list {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.ancor_list > li {
+  list-style: none;
+}
+
+.ancor_list a {
+  font-size: 1.5rem;
+  color: rgb(121, 184, 243);
+  text-decoration: none;
+  transition: color 300ms;
+}
+
+.ancor_list a:hover {
+  color: rgb(144, 223, 254);
+}
+
+.copyright {
+  font-size: 1.5rem;
+  color: #8197a4;
+}

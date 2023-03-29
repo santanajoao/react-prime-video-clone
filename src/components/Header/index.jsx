@@ -4,12 +4,14 @@ import { BsGlobe2 } from 'react-icons/bs';
 import { AiOutlineUser } from 'react-icons/ai';
 import styles from './style.module.css';
 import PrimevideoLogo from '../PrimevideoLogo';
+import TextLessButton from '../TextLessButton';
 
 export default function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.header_left}>
         <PrimevideoLogo className={styles.primevideo_logo} />
+
         <nav className={styles.nav}>
           <ul className={styles.links_list}>
             <li>
@@ -37,9 +39,12 @@ export default function Header() {
             Experimente grátis
           </a>
 
-          <button type="button" className={styles.search_button}>
+          <TextLessButton
+            textTip="Botão de busca"
+            className={styles.search_button}
+          >
             <BiSearch className={styles.search_icon} />
-          </button>
+          </TextLessButton>
         </div>
 
         <button type="button" className={styles.language_button}>
@@ -47,9 +52,12 @@ export default function Header() {
           <span>PT</span>
         </button>
 
-        <button type="button" className={styles.profile_button}>
+        <TextLessButton
+          textTip="Botão de perfil"
+          className={styles.profile_button}
+        >
           <AiOutlineUser className={styles.profile_icon} />
-        </button>
+        </TextLessButton>
       </div>
     </header>
   );

@@ -5,6 +5,7 @@ import { getMoviesWithThumb } from '../../helpers/movies';
 import LabelAndRadio from './LabelAndRadio';
 import styles from './style.module.css';
 import ArrowButton from '../ArrowButton';
+import ConditionalAncor from './ConditionalAncor';
 
 // componentizar os elementos
 const MIN_SELECTION = 0;
@@ -12,8 +13,10 @@ const NUMBER_OF_MOVIES_DISPLAYED = 10;
 
 export default function MovieBannerCarousel() {
   const [movies, setMovies] = useState([]);
-  const { selected, setSelected, selectNext, selectPrevious } =
-    useIndexSelection(MIN_SELECTION, NUMBER_OF_MOVIES_DISPLAYED);
+  const { selected, select, selectNext, selectPrevious } = useIndexSelection(
+    MIN_SELECTION,
+    NUMBER_OF_MOVIES_DISPLAYED,
+  );
 
   async function getPopularMovies() {
     const movies = await fetchPopularMovies();
@@ -59,7 +62,7 @@ export default function MovieBannerCarousel() {
           <LabelAndRadio
             key={`label-radio-${index}`}
             value={index}
-            onChange={() => setSelected(index)}
+            onChange={() => select(index)}
             name="carousel-selection"
             label={`Selecionar o ${index + 1}° banner de filme`}
             id={`radio-${index}`}
@@ -70,15 +73,15 @@ export default function MovieBannerCarousel() {
       </div>
 
       <ol className={styles.movie_list}>
-        {movies.map((movie) => (
+        {movies.map((movie, index) => (
           <li key={movie.id} style={{ transform: movieStyle }}>
-            <a href="#">
+            <ConditionalAncor shouldRender={index === selected} href="#">
               <img
                 src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
                 className={styles.movie_image}
                 alt={movie.title}
               />
-            </a>
+            </ConditionalAncor>
           </li>
         ))}
       </ol>

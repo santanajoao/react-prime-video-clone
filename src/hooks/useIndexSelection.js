@@ -23,5 +23,11 @@ export default function useIndexSelection(min, max) {
     }
   }
 
-  return { selected, setSelected, selectNext, selectPrevious };
+  function select(index) {
+    if (index >= min && index <= max) {
+      setSelected(index);
+    }
+  }
+
+  return { selected, select, selectNext, selectPrevious };
 }

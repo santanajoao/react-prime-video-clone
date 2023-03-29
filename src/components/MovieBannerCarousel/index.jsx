@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import useIndexSelection from '../../hooks/useIndexSelection';
 import { fetchPopularMovies } from '../../services/movies';
+import { getMoviesWithThumb } from '../../helpers/movies';
 import LabelAndRadio from './LabelAndRadio';
 import styles from './style.module.css';
 import ArrowButton from '../ArrowButton';
@@ -16,7 +17,10 @@ export default function MovieBannerCarousel() {
 
   async function getPopularMovies() {
     const movies = await fetchPopularMovies();
-    const nFirstMostPopular = movies.splice(0, NUMBER_OF_MOVIES_DISPLAYED);
+    const nFirstMostPopular = getMoviesWithThumb(
+      movies,
+      NUMBER_OF_MOVIES_DISPLAYED,
+    );
     setMovies(nFirstMostPopular);
   }
 

@@ -84,10 +84,16 @@
   border: none;
   background-color: rgb(255, 255, 255, 0.35);
   box-shadow: 0.1rem 0.1rem 0.4rem rgba(0, 0, 0, 0.4);
+  border: 1px solid transparent;
 }
 
 .radio:checked {
   background-color: rgb(255, 255, 255, 0.9);
+}
+
+.radio:focus {
+  outline: 1px solid white;
+  border: 1px solid black;
 }
 
 .movie_list {

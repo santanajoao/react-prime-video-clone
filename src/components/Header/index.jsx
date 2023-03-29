@@ -2,18 +2,14 @@ import React from 'react';
 import { BiSearch } from 'react-icons/bi';
 import { BsGlobe2 } from 'react-icons/bs';
 import { AiOutlineUser } from 'react-icons/ai';
-import primeVideoLogo from '../../assets/prime-video-logo.svg';
 import styles from './style.module.css';
+import PrimevideoLogo from '../PrimevideoLogo';
 
 export default function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.header_left}>
-        <img
-          src={primeVideoLogo}
-          className={styles.primevideo_logo}
-          alt="Logo do primevideo"
-        />
+        <PrimevideoLogo className={styles.primevideo_logo} />
         <nav className={styles.nav}>
           <ul className={styles.links_list}>
             <li>

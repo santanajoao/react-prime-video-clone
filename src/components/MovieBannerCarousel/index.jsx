@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import useIndexSelection from '../../hooks/useIndexSelection';
 import { fetchPopularMovies } from '../../services/movies';
-import { SlArrowLeft, SlArrowRight } from 'react-icons/sl';
 import LabelAndRadio from '../LabelAndRadio';
 import styles from './style.module.css';
-import TextLessButton from '../TextLessButton';
+import ArrowButton from '../ArrowButton';
 
 // componentizar os elementos
 const MIN_SELECTION = 0;
@@ -36,23 +35,21 @@ export default function MovieBannerCarousel() {
   return (
     <div className={styles.carousel}>
       {firstIsNotSelected && (
-        <TextLessButton
+        <ArrowButton
           textTip="Mover para banner do filme anterior"
           onClick={selectPrevious}
+          direction="left"
           className={styles.left_button}
-        >
-          <SlArrowLeft className={styles.left_icon} />
-        </TextLessButton>
+        />
       )}
 
       {lastIsNotSelected && (
-        <TextLessButton
+        <ArrowButton
           textTip="Mover para o banner do próximo filme"
           onClick={selectNext}
+          direction="right"
           className={styles.right_button}
-        >
-          <SlArrowRight className={styles.right_icon} />
-        </TextLessButton>
+        />
       )}
 
       <div className={styles.radios_wrapper}>

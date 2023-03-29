@@ -19,6 +19,8 @@
   padding: 0 1rem;
   z-index: 2;
   filter: drop-shadow(0 0.2rem 0.4rem rgb(0, 0, 0));
+  color: #fff;
+  font-size: 3.5rem;
 }
 
 .left_button {
@@ -62,12 +64,6 @@
 .right_button:hover::after,
 .left_button:hover::after {
   opacity: 1;
-}
-
-.left_button > .left_icon,
-.right_button > .right_icon {
-  color: #fff;
-  font-size: 3.5rem;
 }
 
 .radios_wrapper {

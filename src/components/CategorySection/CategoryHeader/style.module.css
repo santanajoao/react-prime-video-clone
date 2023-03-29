@@ -1,0 +1,26 @@
+.header {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.prime_logo {
+  height: 2.4rem;
+}
+
+.category_title {
+  font-size: 1.9rem;
+  color: #fff;
+}
+
+.category_ancor {
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: rgb(121, 184, 243);
+  text-decoration: none;
+  transition: color 300ms;
+}
+
+.category_ancor:hover {
+  color: rgb(144, 223, 254);
+}

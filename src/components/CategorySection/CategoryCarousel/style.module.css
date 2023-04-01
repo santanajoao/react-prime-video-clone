@@ -1,0 +1,47 @@
+.carousel {
+  position: relative;
+}
+
+.left_button,
+.right_button {
+  position: absolute;
+  height: 100%;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0 1rem;
+  z-index: 2;
+  color: #fff;
+  font-size: 3.5rem;
+}
+
+.left_button {
+  left: 0;
+}
+
+.right_button {
+  right: 0;
+}
+
+.movie_list {
+  display: flex;
+  width: 100%;
+  height: 18.5rem;
+  gap: 1rem;
+  overflow: hidden;
+  overflow-x: scroll;
+}
+
+.movie_list::-webkit-scrollbar {
+  display: none;
+}
+
+.movie_list {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.movie_list > li {
+  list-style: none;
+  overflow: visible;
+}

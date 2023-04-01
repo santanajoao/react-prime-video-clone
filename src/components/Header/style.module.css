@@ -47,29 +47,32 @@
   cursor: default;
   background-color: transparent;
   border: none;
-  padding: 0.3rem;
 }
 
 .nav_item_category::before,
 .language_button::before,
 .profile_button:before {
   content: '';
-  width: 1rem;
-  height: 0.4rem;
+  width: 1.1rem;
+  height: 0.5rem;
   display: inline-block;
   background-color: #1b2530;
   position: absolute;
-  right: 0;
-  top: 0.8rem;
+  right: -0.1rem;
+  top: 0.4rem;
   z-index: 2;
+}
+
+.nav_item_category::before {
+  top: 0.5rem;
 }
 
 .nav_item_category::after,
 .language_button::after,
 .profile_button::after {
   content: '';
-  width: 0.6rem;
-  height: 0.6rem;
+  width: 0.7rem;
+  height: 0.7rem;
   background-color: rgb(255, 255, 255, 0.8);
   rotate: 45deg;
   margin-left: 1rem;

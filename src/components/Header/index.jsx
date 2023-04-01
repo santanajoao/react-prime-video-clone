@@ -42,20 +42,23 @@ export default function Header() {
           </a>
 
           <TextLessButton
-            textTip="Botão de busca"
+            textTip="Pesquisar no primevideo"
             className={styles.search_button}
           >
             <BiSearch className={styles.search_icon} />
           </TextLessButton>
         </div>
 
-        <button type="button" className={styles.language_button}>
+        <TextLessButton
+          textTip="Selecionar linguagem. Linguagem selecionada:"
+          className={styles.language_button}
+        >
           <BsGlobe2 className={styles.language_icon} />
           <span>PT</span>
-        </button>
+        </TextLessButton>
 
         <TextLessButton
-          textTip="Botão de perfil"
+          textTip="Abrir opções de perfil"
           className={styles.profile_button}
         >
           <AiOutlineUser className={styles.profile_icon} />

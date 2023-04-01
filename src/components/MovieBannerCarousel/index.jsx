@@ -64,7 +64,7 @@ export default function MovieBannerCarousel() {
             value={index}
             onChange={() => select(index)}
             name="carousel-selection"
-            label={`Selecionar o ${index + 1}° banner de filme`}
+            label={`Selecionar o filme ${index + 1} do carrossel`}
             id={`radio-${index}`}
             className={styles.radio}
             checked={selected === index}

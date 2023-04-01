@@ -10,7 +10,9 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.header_left}>
-        <PrimevideoLogo className={styles.primevideo_logo} />
+        <a href="#">
+          <PrimevideoLogo className={styles.primevideo_logo} />
+        </a>
 
         <nav className={styles.nav}>
           <ul className={styles.links_list}>

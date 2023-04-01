@@ -24,7 +24,9 @@ export default function Header() {
               <a href="#">Canais</a>
             </li>
             <li>
-              <span className={styles.nav_item_category}>Categorias</span>
+              <button type="button" className={styles.nav_item_category}>
+                Categorias
+              </button>
             </li>
             <li>
               <a href="#">Minha área</a>

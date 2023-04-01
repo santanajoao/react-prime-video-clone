@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { fetchMoviesByGenres } from '../../../services/movies';
 import ArrowButton from '../../ArrowButton';
+import MovieCard from '../MovieCard';
 import styles from './style.module.css';
 
 const genresMap = {
@@ -43,13 +44,10 @@ export default function CategoryCarousel({ genre }) {
 
       <ol className={styles.movie_list}>
         {movies.map((movie) => (
-          <li>
-            <img
-              src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}
-              alt=""
-              width="330"
-              height="185.5"
-              loading="lazy"
+          <li key={movie.id}>
+            <MovieCard
+              image={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}
+              title={movie.title}
             />
           </li>
         ))}

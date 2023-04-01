@@ -11,9 +11,11 @@ export default function App() {
       <Header />
       <main className={styles.main}>
         <MovieBannerCarousel />
-        <CategorySection title="Filmes de animação" genre="animation" />
-        <CategorySection title="Filmes de comédia" genre="comedy" />
-        <CategorySection title="Filmes de ação" genre="action" />
+        <section className={styles.carousels_wrapper}>
+          <CategorySection title="Filmes de animação" genre="animation" />
+          <CategorySection title="Filmes de comédia" genre="comedy" />
+          <CategorySection title="Filmes de ação" genre="action" />
+        </section>
       </main>
       <Footer />
     </div>

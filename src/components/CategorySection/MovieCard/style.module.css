@@ -1,0 +1,41 @@
+.movie_ancor {
+  text-decoration: none;
+  color: initial;
+}
+
+.movie_card {
+  width: 30rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.prime_tag {
+  background-color: white;
+  color: #1491b7;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+  transform: rotate(-45deg);
+  position: absolute;
+  padding: 0.3rem 2rem;
+  top: 0.7rem;
+  left: -2.4rem;
+  justify-content: center;
+}
+
+.prime_tag::before {
+  content: '';
+  border-right: 0.2rem solid #f69a3c;
+  border-bottom: 0.2rem solid #f69a3c;
+  height: 0.8rem;
+  width: 0.4rem;
+  margin-right: 0.2rem;
+  transform: rotate(45deg) skew(12deg, 10deg);
+  display: block;
+}
+
+.movie_banner {
+  width: 100%;
+  object-fit: cover;
+}

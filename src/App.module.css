@@ -10,3 +10,10 @@
 .main {
   flex-grow: 1;
 }
+
+.carousels_wrapper {
+  padding: 3rem 0rem 2rem 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}

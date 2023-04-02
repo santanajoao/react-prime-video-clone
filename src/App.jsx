@@ -12,9 +12,13 @@ export default function App() {
       <main className={styles.main}>
         <MovieBannerCarousel />
         <section className={styles.carousels_wrapper}>
-          <CategorySection title="Filmes de animação" genre="animation" />
-          <CategorySection title="Filmes de comédia" genre="comedy" />
+          <CategorySection title="Filmes para toda a família" genre="family" />
           <CategorySection title="Filmes de ação" genre="action" />
+          <CategorySection title="Filmes de terror" genre="horror" />
+          <CategorySection title="Filmes de comédia" genre="comedy" />
+          <CategorySection title="Filmes de guerra" genre="war" />
+          <CategorySection title="Filmes de animação" genre="animation" />
+          <CategorySection title="Filmes de fantasia" genre="fantasy" />
         </section>
       </main>
       <Footer />

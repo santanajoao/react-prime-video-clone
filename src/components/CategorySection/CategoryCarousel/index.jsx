@@ -10,6 +10,11 @@ const genresMap = {
   animation: 16,
   comedy: 35,
   crime: 80,
+  drama: 18,
+  family: 10751,
+  fantasy: 14,
+  horror: 27,
+  war: 10752,
 };
 
 export default function CategoryCarousel({ genre }) {
@@ -41,6 +46,9 @@ export default function CategoryCarousel({ genre }) {
     setScrollPosition(target.scrollLeft);
   }
 
+  const listEl = movieList.current;
+  const maxScroll = listEl?.scrollWidth - listEl?.clientWidth || 1;
+
   return (
     <div className={styles.carousel}>
       {scrollPosition > 0 && (
@@ -52,12 +60,14 @@ export default function CategoryCarousel({ genre }) {
         />
       )}
 
-      <ArrowButton
-        textTip="Rolar para direita"
-        direction="right"
-        onClick={() => moveScroll('rigth')}
-        className={styles.right_button}
-      />
+      {scrollPosition < maxScroll && (
+        <ArrowButton
+          textTip="Rolar para direita"
+          direction="right"
+          onClick={() => moveScroll('rigth')}
+          className={styles.right_button}
+        />
+      )}
 
       <ol ref={movieList} onScroll={handleScroll} className={styles.movie_list}>
         {movies.map((movie) => (

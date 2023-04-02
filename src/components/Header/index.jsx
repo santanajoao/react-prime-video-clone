@@ -11,6 +11,9 @@ export default function Header() {
     <header className={styles.header}>
       <div className={styles.header_left}>
         <a href="#">
+          <span className="screen-readers-only">
+            Voltar para a página inicial
+          </span>
           <PrimevideoLogo className={styles.primevideo_logo} />
         </a>
 

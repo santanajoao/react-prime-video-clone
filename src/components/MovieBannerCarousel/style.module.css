@@ -46,18 +46,16 @@
 .left_button::after {
   background-image: linear-gradient(
     to right,
-    rgb(0, 0, 0, 0.2) 40%,
-    rgb(255, 255, 255, 0.05),
-    rgb(255, 255, 255, 0)
+    rgb(0, 0, 0, 0.2) 35%,
+    transparent
   );
 }
 
 .right_button::after {
   background-image: linear-gradient(
     to left,
-    rgb(0, 0, 0, 0.2) 40%,
-    rgb(255, 255, 255, 0.05),
-    rgb(255, 255, 255, 0)
+    rgb(0, 0, 0, 0.2) 35%,
+    transparent
   );
 }
 
@@ -70,7 +68,7 @@
   position: absolute;
   bottom: 0;
   display: flex;
-  gap: 6px;
+  gap: 0.75rem;
   padding: 1rem;
   z-index: 2;
 }
@@ -79,8 +77,8 @@
   all: unset;
   border-radius: 50%;
   cursor: pointer;
-  width: 1.4rem;
-  height: 1.4rem;
+  width: 1.1rem;
+  height: 1.1rem;
   border: none;
   background-color: rgb(255, 255, 255, 0.35);
   box-shadow: 0.1rem 0.1rem 0.4rem rgba(0, 0, 0, 0.4);

@@ -51,6 +51,7 @@ export default function CategoryCarousel({ genre }) {
           className={styles.left_button}
         />
       )}
+
       <ArrowButton
         textTip="Rolar para direita"
         direction="right"

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { fetchMoviesByGenres } from '../../../services/movies';
 import ArrowButton from '../../ArrowButton';
 import MovieCard from '../MovieCard';
@@ -13,7 +13,9 @@ const genresMap = {
 };
 
 export default function CategoryCarousel({ genre }) {
+  const [scrollPosition, setScrollPosition] = useState(0);
   const [movies, setMovies] = useState([]);
+  const movieList = useRef(null);
 
   useEffect(() => {
     fetchGenre();
@@ -29,20 +31,34 @@ export default function CategoryCarousel({ genre }) {
     setMovies(results);
   }
 
+  function moveScroll(direction) {
+    const scrollAmmount = window.innerWidth * 0.8;
+    const difference = direction === 'left' ? -scrollAmmount : scrollAmmount;
+    movieList.current.scrollTo({ left: scrollPosition + difference });
+  }
+
+  function handleScroll({ target }) {
+    setScrollPosition(target.scrollLeft);
+  }
+
   return (
     <div className={styles.carousel}>
-      <ArrowButton
-        textTip="Rolar para esquerda"
-        direction="left"
-        className={styles.left_button}
-      />
+      {scrollPosition > 0 && (
+        <ArrowButton
+          textTip="Rolar para esquerda"
+          direction="left"
+          onClick={() => moveScroll('left')}
+          className={styles.left_button}
+        />
+      )}
       <ArrowButton
         textTip="Rolar para direita"
         direction="right"
+        onClick={() => moveScroll('rigth')}
         className={styles.right_button}
       />
 
-      <ol className={styles.movie_list}>
+      <ol ref={movieList} onScroll={handleScroll} className={styles.movie_list}>
         {movies.map((movie) => (
           <li key={movie.id}>
             <MovieCard

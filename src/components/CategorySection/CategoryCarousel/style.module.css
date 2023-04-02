@@ -1,5 +1,6 @@
 .carousel {
   position: relative;
+  margin-top: 1rem;
 }
 
 .left_button,
@@ -9,10 +10,16 @@
   background-color: transparent;
   border: none;
   cursor: pointer;
-  padding: 0 1rem;
+  padding: 0 0.8rem;
   z-index: 2;
   color: #fff;
   font-size: 3.5rem;
+  transition: background-color 300ms;
+}
+
+.left_button:hover,
+.right_button:hover {
+  background-color: rgb(0, 0, 0, 0.3);
 }
 
 .left_button {
@@ -29,6 +36,8 @@
   gap: 1rem;
   overflow: hidden;
   overflow-x: scroll;
+  margin-left: 5rem;
+  scroll-behavior: smooth;
 }
 
 .movie_list::-webkit-scrollbar {

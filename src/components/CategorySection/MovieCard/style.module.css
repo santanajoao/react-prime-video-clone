@@ -1,12 +1,26 @@
 .movie_ancor {
   text-decoration: none;
   color: initial;
+  display: block;
 }
 
 .movie_card {
-  width: 30rem;
   position: relative;
+  width: 30rem;
+  color: white;
+  transition: transform 300ms;
+}
+
+.movie_card:hover {
+  transform: scale(1.1);
+  z-index: 10;
+}
+
+.tag_wrapper {
   overflow: hidden;
+  position: absolute;
+  height: 30%;
+  width: 100%;
 }
 
 .prime_tag {
@@ -38,5 +52,66 @@
 .movie_banner {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+}
+
+.card_bottom {
+  width: 100%;
+  opacity: 0;
+  display: none;
+  cursor: default;
+  padding: 0 2rem 3rem;
+  background-image: linear-gradient(to top, #1b2530, black);
+}
+
+.movie_card:hover > .card_bottom {
+  display: block;
+  opacity: 1;
+  position: absolute;
+  top: 95%;
+  z-index: 9;
+}
+
+.card_interactions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.bottom_ancor {
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: rgb(48, 161, 193);
+}
+
+.favorite_button {
+  background-color: transparent;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 3.5rem;
+  color: white;
+  display: flex;
+}
+
+.card_title {
+  font-size: 1.6rem;
+}
+
+.card_description {
+  font-size: 1.4rem;
+  margin-top: 0.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.year {
+  font-size: 1.4rem;
+  display: inline-block;
+  margin-top: 0.7rem;
 }

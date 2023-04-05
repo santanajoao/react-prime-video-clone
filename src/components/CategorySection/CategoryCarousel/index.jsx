@@ -75,6 +75,8 @@ export default function CategoryCarousel({ genre }) {
             <MovieCard
               image={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}
               title={movie.title}
+              description={movie.overview}
+              releaseYear={movie.release_date?.slice(0, 4)}
             />
           </li>
         ))}

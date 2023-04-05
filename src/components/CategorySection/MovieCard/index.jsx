@@ -22,9 +22,9 @@ export default function MovieCard({ image, title, description, releaseYear }) {
 
         <div className={styles.card_bottom}>
           <div className={styles.card_interactions}>
-            <a href="#" className={styles.bottom_ancor}>
+            <button type="button" className={styles.button_ancor}>
               Assistir com o prime
-            </a>
+            </button>
             <button
               type="button"
               title="Adicionar aos favoritos"

@@ -78,11 +78,14 @@
   padding: 1rem 0;
 }
 
-.bottom_ancor {
-  font-size: 1.4rem;
+.button_ancor {
+  font-size: 1.5rem;
   font-weight: 600;
   text-decoration: none;
   color: rgb(48, 161, 193);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
 
 .favorite_button {

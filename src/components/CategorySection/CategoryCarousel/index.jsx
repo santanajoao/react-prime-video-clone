@@ -49,7 +49,7 @@ export default function CategoryCarousel({ genre }) {
   }
 
   const listStyle = {
-    transform: `translateX()`,
+    transform: `translateX(0)`,
   };
 
   return (

@@ -7,9 +7,10 @@ export default function TextLessButton({
   className,
   onClick,
   textTip,
+  title,
 }) {
   return (
-    <button type="button" onClick={onClick} className={className}>
+    <button type="button" title={title} onClick={onClick} className={className}>
       <span className="screen-readers-only">{textTip}</span>
       {children}
     </button>

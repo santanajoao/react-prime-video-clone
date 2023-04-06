@@ -1,8 +1,13 @@
 .movie_ancor {
   text-decoration: none;
   color: initial;
-  display: block;
+  display: inline-block;
   position: relative;
+}
+
+.movie_ancor:focus {
+  outline: 0.2rem solid white;
+  border-radius: 0.1rem;
 }
 
 .movie_card {

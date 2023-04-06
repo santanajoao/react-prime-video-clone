@@ -1,6 +1,7 @@
 import React from 'react';
 import { IoMdAdd } from 'react-icons/io';
 import styles from './style.module.css';
+import TextLessButton from '../../TextLessButton';
 
 export default function MovieCard({ image, title, description, releaseYear }) {
   return (
@@ -9,7 +10,6 @@ export default function MovieCard({ image, title, description, releaseYear }) {
         <div className={styles.tag_wrapper}>
           <div className={styles.prime_tag}>
             <span aria-hidden="true">prime</span>
-            <span className="screen-readers-only">Incluído no prime vídeo</span>
           </div>
         </div>
 
@@ -25,16 +25,14 @@ export default function MovieCard({ image, title, description, releaseYear }) {
             <button type="button" className={styles.button_ancor}>
               Assistir com o prime
             </button>
-            <button
-              type="button"
+
+            <TextLessButton
               title="Adicionar aos favoritos"
               className={styles.favorite_button}
+              textTip="Adicionar -nome- aos favoritos"
             >
-              <span className="screen-readers-only">
-                Adicionar -nome- aos favoritos
-              </span>
               <IoMdAdd />
-            </button>
+            </TextLessButton>
           </div>
 
           <div>

@@ -11,7 +11,7 @@
   border: none;
   cursor: pointer;
   padding: 0 0.8rem;
-  z-index: 2;
+  z-index: 40;
   color: #fff;
   font-size: 3.5rem;
   transition: background-color 300ms;
@@ -36,15 +36,13 @@
   gap: 1rem;
   scroll-behavior: smooth;
   padding: 0 5rem;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  transition: transform 400ms;
 }
 
 .movie_list::-webkit-scrollbar {
   display: none;
-}
-
-.movie_list {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
 }
 
 .movie_list > li {

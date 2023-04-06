@@ -2,6 +2,7 @@
   text-decoration: none;
   color: initial;
   display: block;
+  position: relative;
 }
 
 .movie_card {
@@ -9,11 +10,12 @@
   width: 30rem;
   color: white;
   transition: transform 300ms;
+  z-index: 10;
 }
 
 .movie_card:hover {
   transform: scale(1.1);
-  z-index: 10;
+  z-index: 30;
 }
 
 .tag_wrapper {
@@ -68,7 +70,6 @@
   opacity: 1;
   position: absolute;
   top: 95%;
-  z-index: 9;
 }
 
 .card_interactions {

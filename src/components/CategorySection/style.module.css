@@ -1,1 +1,3 @@
-
+.category_section:hover {
+  z-index: 999;
+}

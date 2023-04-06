@@ -17,14 +17,26 @@ const genresMap = {
   war: 10752,
 };
 
+const maxScroll = 5;
+
 export default function CategoryCarousel({ genre }) {
-  const [scrollPosition, setScrollPosition] = useState(0);
   const [movies, setMovies] = useState([]);
+  const [selected, setSelected] = useState(0);
+  const [max, setMax] = useState(0);
   const movieList = useRef(null);
 
   useEffect(() => {
     fetchGenre();
+    adjustCarouselStyles();
   }, []);
+
+  function adjustCarouselStyles() {
+    window.addEventListener('resize', () => {
+      const movieListEl = movieList.current;
+      const max = movieListEl?.scrollWidth - movieListEl?.clientWidth + 50;
+      setMax(max);
+    });
+  }
 
   async function fetchGenre() {
     const genreId = genresMap[genre];
@@ -36,40 +48,31 @@ export default function CategoryCarousel({ genre }) {
     setMovies(results);
   }
 
-  function moveScroll(direction) {
-    const scrollAmmount = window.innerWidth * 0.8;
-    const difference = direction === 'left' ? -scrollAmmount : scrollAmmount;
-    movieList.current.scrollTo({ left: scrollPosition + difference });
-  }
-
-  function handleScroll({ target }) {
-    setScrollPosition(target.scrollLeft);
-  }
-
-  const listEl = movieList.current;
-  const maxScroll = listEl?.scrollWidth - listEl?.clientWidth || 1;
+  const listStyle = {
+    transform: `translateX()`,
+  };
 
   return (
     <div className={styles.carousel}>
-      {scrollPosition > 0 && (
+      {selected > 0 && (
         <ArrowButton
           textTip="Rolar para esquerda"
           direction="left"
-          onClick={() => moveScroll('left')}
+          onClick={() => setSelected(selected - 1)}
           className={styles.left_button}
         />
       )}
 
-      {scrollPosition < maxScroll && (
+      {selected < maxScroll && (
         <ArrowButton
           textTip="Rolar para direita"
           direction="right"
-          onClick={() => moveScroll('rigth')}
+          onClick={() => setSelected(selected + 1)}
           className={styles.right_button}
         />
       )}
 
-      <ol ref={movieList} onScroll={handleScroll} className={styles.movie_list}>
+      <ol style={listStyle} ref={movieList} className={styles.movie_list}>
         {movies.map((movie) => (
           <li key={movie.id}>
             <MovieCard

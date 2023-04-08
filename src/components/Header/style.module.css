@@ -50,30 +50,17 @@
   cursor: pointer;
 }
 
-.nav_item_category::before,
-.language_button::before,
-.profile_button::before {
-  content: '';
-  width: 1.1rem;
-  height: 0.7rem;
-  display: inline-block;
-  background-color: #1b2530;
-  position: absolute;
-  right: -0.2rem;
-  top: 0.3rem;
-
-  z-index: 2;
-}
-
 .nav_item_category::after,
 .language_button::after,
 .profile_button::after {
   content: '';
-  width: 0.7rem;
-  height: 0.7rem;
-  background-color: rgb(255, 255, 255, 0.8);
-  rotate: 45deg;
-  margin-left: 1rem;
+  width: 0;
+  height: 0;
+  transform: translateY(50%);
+  position: relative;
+  border: 0.45rem solid transparent;
+  border-color: white transparent transparent transparent;
+  margin-left: 0.9rem;
   display: inline-block;
 }
 
@@ -143,11 +130,6 @@
 
 .language_button > span {
   font-size: 1.7rem;
-}
-
-.language_button::before,
-.profile_button::before {
-  top: 1.1rem;
 }
 
 .language_button::after {

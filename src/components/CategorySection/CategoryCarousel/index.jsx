@@ -3,6 +3,7 @@ import { fetchMoviesByGenres } from '../../../services/movies';
 import ArrowButton from '../../ArrowButton';
 import MovieCard from '../MovieCard';
 import styles from './style.module.css';
+import useElementDimensions from '../../../hooks/useElementDimensions';
 
 const genresMap = {
   action: 28,
@@ -17,26 +18,14 @@ const genresMap = {
   war: 10752,
 };
 
-const maxScroll = 5;
-
 export default function CategoryCarousel({ genre }) {
   const [movies, setMovies] = useState([]);
   const [selected, setSelected] = useState(0);
-  const [max, setMax] = useState(0);
-  const movieList = useRef(null);
+  const { elementRef, dimensions } = useElementDimensions();
 
   useEffect(() => {
     fetchGenre();
-    adjustCarouselStyles();
   }, []);
-
-  function adjustCarouselStyles() {
-    window.addEventListener('resize', () => {
-      const movieListEl = movieList.current;
-      const max = movieListEl?.scrollWidth - movieListEl?.clientWidth + 50;
-      setMax(max);
-    });
-  }
 
   async function fetchGenre() {
     const genreId = genresMap[genre];
@@ -48,13 +37,32 @@ export default function CategoryCarousel({ genre }) {
     setMovies(results);
   }
 
+  const max = dimensions.scrollWidth - dimensions.width + 50;
+
+  function calculateCarouselPosition() {
+    const imagesWidth = 310;
+    const howManyImagesFit = Math.trunc(dimensions.width / imagesWidth);
+    const fitScreenPosition = howManyImagesFit * imagesWidth;
+    let displacement = fitScreenPosition * selected;
+
+    if (displacement < 0) {
+      return 0;
+    }
+    if (displacement > max) {
+      return max;
+    }
+    return displacement;
+  }
+
+  const displacement = calculateCarouselPosition();
+
   const listStyle = {
-    transform: `translateX(0)`,
+    transform: `translateX(-${displacement}px)`,
   };
 
   return (
     <div className={styles.carousel}>
-      {selected > 0 && (
+      {displacement > 0 && (
         <ArrowButton
           textTip="Rolar para esquerda"
           direction="left"
@@ -63,7 +71,7 @@ export default function CategoryCarousel({ genre }) {
         />
       )}
 
-      {selected < maxScroll && (
+      {displacement < max && (
         <ArrowButton
           textTip="Rolar para direita"
           direction="right"
@@ -72,7 +80,7 @@ export default function CategoryCarousel({ genre }) {
         />
       )}
 
-      <ol style={listStyle} ref={movieList} className={styles.movie_list}>
+      <ol style={listStyle} ref={elementRef} className={styles.movie_list}>
         {movies.map((movie) => (
           <li key={movie.id}>
             <MovieCard

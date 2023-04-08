@@ -4,18 +4,18 @@ export default function useElementDimensions() {
   const elementRef = useRef(null);
   const [dimensions, setDimensions] = useState({});
 
-  function handleResize() {
+  function getDimensions() {
     const element = elementRef.current;
 
     setDimensions({
-      width: element.clientWidth,
-      scrollWidth: element.scrollWidth,
+      width: element?.clientWidth,
+      scrollWidth: element?.scrollWidth,
     });
   }
 
   useEffect(() => {
-    window.addEventListener('resize', handleResize);
+    window.addEventListener('resize', getDimensions);
   }, [elementRef]);
 
-  return { elementRef, dimensions };
+  return { elementRef, dimensions, getDimensions };
 }

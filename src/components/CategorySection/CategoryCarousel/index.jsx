@@ -18,14 +18,20 @@ const genresMap = {
   war: 10752,
 };
 
+const padding = 50;
+
 export default function CategoryCarousel({ genre }) {
   const [movies, setMovies] = useState([]);
   const [selected, setSelected] = useState(0);
-  const { elementRef, dimensions } = useElementDimensions();
+  const { elementRef, dimensions, getDimensions } = useElementDimensions();
 
   useEffect(() => {
     fetchGenre();
   }, []);
+
+  useEffect(() => {
+    getDimensions();
+  }, [selected]);
 
   async function fetchGenre() {
     const genreId = genresMap[genre];
@@ -37,32 +43,32 @@ export default function CategoryCarousel({ genre }) {
     setMovies(results);
   }
 
-  const max = dimensions.scrollWidth - dimensions.width + 50;
+  const maxTranslate = dimensions.scrollWidth - dimensions.width + padding;
 
   function calculateCarouselPosition() {
     const imagesWidth = 310;
     const howManyImagesFit = Math.trunc(dimensions.width / imagesWidth);
     const fitScreenPosition = howManyImagesFit * imagesWidth;
-    let displacement = fitScreenPosition * selected;
 
-    if (displacement < 0) {
+    let translate = fitScreenPosition * selected;
+    if (translate < 0) {
       return 0;
     }
-    if (displacement > max) {
-      return max;
+    if (translate > maxTranslate) {
+      return maxTranslate;
     }
-    return displacement;
+    return translate || 0;
   }
 
-  const displacement = calculateCarouselPosition();
+  const translate = calculateCarouselPosition();
 
   const listStyle = {
-    transform: `translateX(-${displacement}px)`,
+    transform: `translateX(-${translate}px)`,
   };
 
   return (
     <div className={styles.carousel}>
-      {displacement > 0 && (
+      {translate > 0 && (
         <ArrowButton
           textTip="Rolar para esquerda"
           direction="left"
@@ -71,7 +77,7 @@ export default function CategoryCarousel({ genre }) {
         />
       )}
 
-      {displacement < max && (
+      {translate < maxTranslate && (
         <ArrowButton
           textTip="Rolar para direita"
           direction="right"

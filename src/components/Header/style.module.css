@@ -57,6 +57,8 @@
 .search_wrapper {
   gap: 1.6rem;
   display: flex;
+  position: relative;
+  align-items: center;
 }
 
 .free_trial_ancor {
@@ -78,10 +80,54 @@
   background-color: #36b0ee;
 }
 
-.search_button {
+.search_input {
+  position: absolute;
   background-color: transparent;
-  border: none;
+  height: 100%;
+  border: 1px solid transparent;
+  border-radius: 0.3rem;
+  width: 12%;
+  right: 0;
   cursor: pointer;
+  color: transparent;
+  transition: width 200ms, border-color 500ms;
+  padding: 0 1rem;
+}
+
+.search_input_wrapper {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  display: flex;
+  padding: 0 1rem;
+}
+
+.search_input_label {
+  position: relative;
+  font-size: 1.6rem;
+  z-index: 20;
+  color: transparent;
+  transition: color 300ms ease-out;
+}
+
+.search_input:focus {
+  color: rgb(255 255 255 / 90%);
+  border: 1px solid white;
+  width: 100%;
+  transition: width 200ms;
+  cursor: text;
+  font-size: 1.6rem;
+  background-color: #0f171e;
+  background-image: linear-gradient(180deg, #1b2530 0, rgb(27 37 48 / 85%));
+}
+
+.search_input:focus + .search_input_label {
+  color: rgb(255 255 255 / 90%);
+}
+
+.search_input:valid + .search_input_label {
+  color: transparent;
 }
 
 .search_icon {
@@ -127,7 +173,10 @@
   margin-left: 0.4rem;
 }
 
-.search_button:hover > .search_icon,
+.search_input:hover + .search_icon {
+  color: #fff;
+}
+
 .profile_button:hover > .profile_icon,
 .language_button:hover {
   color: #fff;

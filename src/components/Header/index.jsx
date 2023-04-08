@@ -46,12 +46,21 @@ export default function Header() {
             Experimente grátis
           </a>
 
-          <TextLessButton
-            textTip="Pesquisar no primevideo"
-            className={styles.search_button}
-          >
-            <BiSearch className={styles.search_icon} />
-          </TextLessButton>
+          <div className={styles.search_input_wrapper}>
+            <input
+              type="text"
+              required
+              id="search-input"
+              className={styles.search_input}
+            />
+            {/*
+              eslint-disable-next-line jsx-a11y/label-has-associated-control
+            */}
+            <label htmlFor="search-input" className={styles.search_input_label}>
+              Busca
+            </label>
+          </div>
+          <BiSearch className={styles.search_icon} />
         </div>
 
         <TextLessButton

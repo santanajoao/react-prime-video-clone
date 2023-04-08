@@ -15,7 +15,7 @@ export default function useElementDimensions() {
 
   useEffect(() => {
     window.addEventListener('resize', getDimensions);
-  }, [elementRef]);
+  }, []);
 
   return { elementRef, dimensions, getDimensions };
 }

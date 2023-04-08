@@ -58,6 +58,7 @@ export default function Header() {
               Busca
             </label>
           </div>
+
           <BiSearch className={styles.search_icon} />
         </div>
 

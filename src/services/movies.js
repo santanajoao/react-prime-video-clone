@@ -1,4 +1,4 @@
-const API_KEY = '8427e7de4210382e41fa0812d7eaf4c7';
+const API_KEY = 'YOUR_API_KEY';
 
 const genresMap = {
   action: 28,

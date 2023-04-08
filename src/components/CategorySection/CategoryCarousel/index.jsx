@@ -7,11 +7,11 @@ import useElementDimensions from '../../../hooks/useElementDimensions';
 
 const genresMap = {
   action: 28,
-  adventure: 12,
+  // adventure: 12,
   animation: 16,
   comedy: 35,
   crime: 80,
-  drama: 18,
+  // drama: 18,
   family: 10751,
   fantasy: 14,
   horror: 27,
@@ -22,8 +22,8 @@ const padding = 50;
 
 export default function CategoryCarousel({ genre }) {
   const [movies, setMovies] = useState([]);
-  const [selected, setSelected] = useState(0);
   const { elementRef, dimensions, getDimensions } = useElementDimensions();
+  const [translate, setTranslate] = useState(0);
 
   useEffect(() => {
     fetchGenre();
@@ -31,7 +31,7 @@ export default function CategoryCarousel({ genre }) {
 
   useEffect(() => {
     getDimensions();
-  }, [selected]);
+  }, [movies]);
 
   async function fetchGenre() {
     const genreId = genresMap[genre];
@@ -45,26 +45,33 @@ export default function CategoryCarousel({ genre }) {
 
   const maxTranslate = dimensions.scrollWidth - dimensions.width + padding;
 
-  function calculateCarouselPosition() {
-    const imagesWidth = 310;
-    const howManyImagesFit = Math.trunc(dimensions.width / imagesWidth);
-    const fitScreenPosition = howManyImagesFit * imagesWidth;
-
-    let translate = fitScreenPosition * selected;
-    if (translate < 0) {
-      return 0;
+  function focusOnCard(index) {
+    let newTranslate = 310 * index;
+    if (newTranslate > maxTranslate) {
+      newTranslate = maxTranslate;
     }
-    if (translate > maxTranslate) {
-      return maxTranslate;
-    }
-    return translate || 0;
+    setTranslate(newTranslate);
   }
 
-  const translate = calculateCarouselPosition();
+  function moveCarousel(direction) {
+    const imagesWidth = 310;
+    const { width } = dimensions;
 
-  const listStyle = {
-    transform: `translateX(-${translate}px)`,
-  };
+    const difference = direction === 'left' ? -width : width;
+    const translateSum = difference + translate;
+    const howManyImagesFit = Math.trunc(translateSum / imagesWidth);
+
+    let newTranslate = howManyImagesFit * imagesWidth;
+    if (newTranslate < 0) {
+      setTranslate(0);
+    } else if (newTranslate > maxTranslate) {
+      setTranslate(maxTranslate);
+    } else {
+      setTranslate(newTranslate || 0);
+    }
+  }
+
+  const listStyle = { transform: `translateX(-${translate}px)` };
 
   return (
     <div className={styles.carousel}>
@@ -72,7 +79,7 @@ export default function CategoryCarousel({ genre }) {
         <ArrowButton
           textTip="Rolar para esquerda"
           direction="left"
-          onClick={() => setSelected(selected - 1)}
+          onClick={() => moveCarousel('left')}
           className={styles.left_button}
         />
       )}
@@ -81,15 +88,16 @@ export default function CategoryCarousel({ genre }) {
         <ArrowButton
           textTip="Rolar para direita"
           direction="right"
-          onClick={() => setSelected(selected + 1)}
+          onClick={() => moveCarousel('right')}
           className={styles.right_button}
         />
       )}
 
       <ol style={listStyle} ref={elementRef} className={styles.movie_list}>
-        {movies.map((movie) => (
+        {movies.map((movie, index) => (
           <li key={movie.id}>
             <MovieCard
+              onFocus={() => focusOnCard(index)}
               image={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}
               title={movie.title}
               description={movie.overview}

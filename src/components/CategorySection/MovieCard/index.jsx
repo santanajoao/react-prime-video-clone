@@ -3,9 +3,15 @@ import { IoMdAdd } from 'react-icons/io';
 import styles from './style.module.css';
 import TextLessButton from '../../TextLessButton';
 
-export default function MovieCard({ image, title, description, releaseYear }) {
+export default function MovieCard({
+  image,
+  title,
+  description,
+  releaseYear,
+  onFocus,
+}) {
   return (
-    <a href="#" className={styles.movie_ancor}>
+    <a href="#" onFocus={onFocus} className={styles.movie_ancor}>
       <div className={styles.movie_card}>
         <div className={styles.tag_wrapper}>
           <div className={styles.prime_tag}>

@@ -1,5 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { fetchMoviesByGenres } from '../../../services/movies';
+import React, { useEffect, useState } from 'react';
 import ArrowButton from '../../ArrowButton';
 import MovieCard from '../MovieCard';
 import styles from './style.module.css';
@@ -7,23 +6,13 @@ import useElementDimensions from '../../../hooks/useElementDimensions';
 
 const padding = 50;
 
-export default function CategoryCarousel({ genre }) {
-  const [movies, setMovies] = useState([]);
+export default function CategoryCarousel({ movies }) {
   const { elementRef, dimensions, getDimensions } = useElementDimensions();
   const [translate, setTranslate] = useState(0);
 
   useEffect(() => {
-    fetchGenre();
-  }, []);
-
-  useEffect(() => {
     getDimensions();
   }, [movies]);
-
-  async function fetchGenre() {
-    const results = await fetchMoviesByGenres(genre);
-    setMovies(results);
-  }
 
   const maxTranslate = dimensions.scrollWidth - dimensions.width + padding;
 

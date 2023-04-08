@@ -10,9 +10,9 @@ Clone do website do primevideo desenvolvido com ReactJS
 
 O projeto foi desenvolvido antes da última atualização do primevideo e por falta de referências não está finalizado.
 
-- **Atualizar para a nova versão do primevideo**
-- **Design responsivo para smartphones e tablets**
-- **Adicionar funcionalidades dos elementos do Header (Categorias, Linguagem, Perfil)**
+- Atualizar para a nova versão do primevideo
+- Design responsivo para smartphones e tablets
+- Adicionar funcionalidades dos elementos do Header (Categorias, Linguagem, Perfil)
 
 ## Tecnologias utilizadas
 

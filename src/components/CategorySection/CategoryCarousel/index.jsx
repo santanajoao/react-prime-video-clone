@@ -15,9 +15,10 @@ export default function CategoryCarousel({ movies }) {
   }, [movies]);
 
   const maxTranslate = dimensions.scrollWidth - dimensions.width + padding;
+  const imagesWidth = 300;
 
   function focusOnCard(index) {
-    let newTranslate = 310 * index;
+    let newTranslate = imagesWidth * index;
     if (newTranslate > maxTranslate) {
       newTranslate = maxTranslate;
     }
@@ -25,7 +26,6 @@ export default function CategoryCarousel({ movies }) {
   }
 
   function moveCarousel(direction) {
-    const imagesWidth = 310;
     const { width } = dimensions;
 
     const difference = direction === 'left' ? -width : width;

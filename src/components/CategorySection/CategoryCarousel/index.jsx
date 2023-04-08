@@ -5,19 +5,6 @@ import MovieCard from '../MovieCard';
 import styles from './style.module.css';
 import useElementDimensions from '../../../hooks/useElementDimensions';
 
-const genresMap = {
-  action: 28,
-  // adventure: 12,
-  animation: 16,
-  comedy: 35,
-  crime: 80,
-  // drama: 18,
-  family: 10751,
-  fantasy: 14,
-  horror: 27,
-  war: 10752,
-};
-
 const padding = 50;
 
 export default function CategoryCarousel({ genre }) {
@@ -34,12 +21,7 @@ export default function CategoryCarousel({ genre }) {
   }, [movies]);
 
   async function fetchGenre() {
-    const genreId = genresMap[genre];
-    if (!genreId) {
-      throw new Error('invalid genre');
-    }
-
-    const results = await fetchMoviesByGenres(genreId);
+    const results = await fetchMoviesByGenres(genre);
     setMovies(results);
   }
 

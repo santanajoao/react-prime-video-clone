@@ -20,7 +20,6 @@ O projeto foi desenvolvido antes da última atualização do primevideo e por fa
 - ReactJS
 - CSS Modules
 - React Icons
-- Context API
 - Custom Hooks
 
 ## Veja você mesmo

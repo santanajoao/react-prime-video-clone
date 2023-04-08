@@ -56,12 +56,19 @@
   content: '';
   width: 0;
   height: 0;
-  transform: translateY(50%);
-  position: relative;
+  transform: translateY(50%) rotate(0deg);
   border: 0.45rem solid transparent;
   border-color: white transparent transparent transparent;
   margin-left: 0.9rem;
   display: inline-block;
+}
+
+.nav_item_category:hover::after,
+.language_button:hover::after,
+.profile_button:hover::after {
+  border: 0.45rem solid transparent;
+  border-color: transparent transparent white transparent;
+  transform: none;
 }
 
 .header_right {

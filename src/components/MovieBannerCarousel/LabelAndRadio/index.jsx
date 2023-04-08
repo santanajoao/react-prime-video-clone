@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export default function LabelAndRadio({
   checked,
@@ -26,3 +27,18 @@ export default function LabelAndRadio({
     </>
   );
 }
+
+LabelAndRadio.propTypes = {
+  checked: PropTypes.bool.isRequired,
+  className: PropTypes.string,
+  id: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  onChange: PropTypes.func,
+  value: PropTypes.number.isRequired,
+};
+
+LabelAndRadio.defaultProps = {
+  className: null,
+  onChange: null,
+};

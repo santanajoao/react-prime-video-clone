@@ -1,20 +1,23 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+import useElementDimensions from '../../../hooks/useElementDimensions';
 import ArrowButton from '../../ArrowButton';
 import MovieCard from '../MovieCard';
 import styles from './style.module.css';
-import useElementDimensions from '../../../hooks/useElementDimensions';
 
 const padding = 50;
 
 export default function CategoryCarousel({ movies }) {
-  const { elementRef, dimensions, getDimensions } = useElementDimensions();
   const [translate, setTranslate] = useState(0);
+  const { elementRef, dimensions, getDimensions } = useElementDimensions();
 
   useEffect(() => {
     getDimensions();
   }, [movies]);
 
   const maxTranslate = dimensions.scrollWidth - dimensions.width + padding;
+
+  // se alterar aqui vvvvv mude também no css
   const imagesWidth = 300;
 
   function focusOnCard(index) {
@@ -32,7 +35,7 @@ export default function CategoryCarousel({ movies }) {
     const translateSum = difference + translate;
     const howManyImagesFit = Math.trunc(translateSum / imagesWidth);
 
-    let newTranslate = howManyImagesFit * imagesWidth;
+    const newTranslate = howManyImagesFit * imagesWidth;
     if (newTranslate < 0) {
       setTranslate(0);
     } else if (newTranslate > maxTranslate) {
@@ -80,3 +83,15 @@ export default function CategoryCarousel({ movies }) {
     </div>
   );
 }
+
+CategoryCarousel.propTypes = {
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      title: PropTypes.string,
+      backdrop_path: PropTypes.string,
+      overview: PropTypes.string,
+      release_date: PropTypes.string,
+    }),
+  ).isRequired,
+};

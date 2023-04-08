@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { fetchMoviesByGenres } from '../../services/movies';
 import CategoryCarousel from './CategoryCarousel';
 import CategoryHeader from './CategoryHeader';
@@ -25,3 +26,8 @@ export default function CategorySection({ title, genre }) {
     </section>
   );
 }
+
+CategorySection.propTypes = {
+  genre: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+};

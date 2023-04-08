@@ -2,15 +2,15 @@ import React from 'react';
 import { BiSearch } from 'react-icons/bi';
 import { BsGlobe2 } from 'react-icons/bs';
 import { AiOutlineUser } from 'react-icons/ai';
-import styles from './style.module.css';
 import PrimevideoLogo from '../PrimevideoLogo';
 import TextLessButton from '../TextLessButton';
+import styles from './style.module.css';
 
 export default function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.header_left}>
-        <a href="#">
+        <a href="#link-home">
           <span className="screen-readers-only">
             Voltar para a página inicial
           </span>
@@ -20,13 +20,13 @@ export default function Header() {
         <nav className={styles.nav}>
           <ul className={styles.links_list}>
             <li>
-              <a href="#">Início</a>
+              <a href="#link-home">Início</a>
             </li>
             <li>
-              <a href="#">Loja</a>
+              <a href="#link-loja">Loja</a>
             </li>
             <li>
-              <a href="#">Canais</a>
+              <a href="#link-canais">Canais</a>
             </li>
             <li>
               <button type="button" className={styles.nav_item_category}>
@@ -34,7 +34,7 @@ export default function Header() {
               </button>
             </li>
             <li>
-              <a href="#">Minha área</a>
+              <a href="#link-minha-area">Minha área</a>
             </li>
           </ul>
         </nav>
@@ -42,7 +42,7 @@ export default function Header() {
 
       <div className={styles.header_right}>
         <div className={styles.search_wrapper}>
-          <a href="#" className={styles.free_trial_ancor}>
+          <a href="#link-experimente" className={styles.free_trial_ancor}>
             Experimente grátis
           </a>
 

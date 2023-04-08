@@ -5,7 +5,7 @@ export default function useIndexSelection(min, max) {
     throw new TypeError('"min" and "max" should be numbers');
   }
 
-  if (parseInt(min) !== min || parseInt(max) !== max) {
+  if (parseInt(min, 10) !== min || parseInt(max, 10) !== max) {
     throw new Error('"min" and "max" should be integers');
   }
 
@@ -29,5 +29,10 @@ export default function useIndexSelection(min, max) {
     }
   }
 
-  return { selected, select, selectNext, selectPrevious };
+  return {
+    selected,
+    select,
+    selectNext,
+    selectPrevious,
+  };
 }

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import useIndexSelection from '../../hooks/useIndexSelection';
 import { fetchPopularMovies } from '../../services/movies';
-import { getMoviesWithThumb } from '../../helpers/movies';
+import getMoviesWithThumb from '../../helpers/movies';
 import LabelAndRadio from './LabelAndRadio';
 import styles from './style.module.css';
 import ArrowButton from '../ArrowButton';
@@ -19,9 +19,9 @@ export default function MovieBannerCarousel() {
   );
 
   async function getPopularMovies() {
-    const movies = await fetchPopularMovies();
+    const movieList = await fetchPopularMovies();
     const nFirstMostPopular = getMoviesWithThumb(
-      movies,
+      movieList,
       NUMBER_OF_MOVIES_DISPLAYED,
     );
     setMovies(nFirstMostPopular);
@@ -58,14 +58,14 @@ export default function MovieBannerCarousel() {
       )}
 
       <div className={styles.radios_wrapper}>
-        {movies.map((_, index) => (
+        {movies.map(({ id }, index) => (
           <LabelAndRadio
-            key={`label-radio-${index}`}
+            key={`label-radio-${id}`}
             value={index}
             onChange={() => select(index)}
             name="carousel-selection"
             label={`Selecionar o filme ${index + 1} do carrossel`}
-            id={`radio-${index}`}
+            id={`radio-${id}`}
             className={styles.radio}
             checked={selected === index}
           />
@@ -75,7 +75,10 @@ export default function MovieBannerCarousel() {
       <ol className={styles.movie_list}>
         {movies.map((movie, index) => (
           <li key={movie.id} style={{ transform: movieStyle }}>
-            <ConditionalAncor shouldRender={index === selected} href="#">
+            <ConditionalAncor
+              shouldRender={index === selected}
+              href="#link-to-movie"
+            >
               <img
                 src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
                 className={styles.movie_image}

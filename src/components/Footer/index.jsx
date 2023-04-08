@@ -10,20 +10,21 @@ export default function Footer() {
         <nav>
           <ul className={styles.ancor_list}>
             <li>
-              <a href="#">Termos e aviso de privacidade</a>
+              <a href="#link-para-os-termos">Termos e aviso de privacidade</a>
             </li>
             <li>
-              <a href="#">Enviar feedback</a>
+              <a href="#link-para-feedback">Enviar feedback</a>
             </li>
             <li>
-              <a href="#">Ajuda</a>
+              <a href="#link-para-ajuda">Ajuda</a>
             </li>
           </ul>
         </nav>
 
         <small className={styles.copyright}>
-          &copy; <span aria-hidden="true">1996-2023</span>
-          <span className="screen-readers-only"> de 1996 a 2023</span>,
+          &copy;
+          <span aria-hidden="true">1996-2023</span>
+          <span className="screen-readers-only"> de 1996 a 2023</span>
           Amazon.com, Inc. ou suas afiliadas
         </small>
       </div>

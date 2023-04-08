@@ -17,17 +17,17 @@
   transition: background-color 300ms;
 }
 
-.left_button:hover,
-.right_button:hover {
-  background-color: rgb(0, 0, 0, 0.3);
-}
-
 .left_button {
   left: 0;
 }
 
 .right_button {
   right: 0;
+}
+
+.left_button:hover,
+.right_button:hover {
+  background-color: rgb(0 0 0 / 30%);
 }
 
 .movie_list {

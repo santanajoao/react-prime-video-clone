@@ -1,6 +1,6 @@
 .header {
   background-color: #0f171e;
-  background-image: linear-gradient(180deg, #1b2530 0, rgba(27, 37, 48, 0.85));
+  background-image: linear-gradient(180deg, #1b2530 0, rgb(27 37 48 / 85%));
   display: flex;
   padding: 1.6rem 4.8rem;
   align-items: center;
@@ -33,42 +33,20 @@
 
 .links_list a {
   text-decoration: none;
-  color: rgb(255, 255, 255, 0.9);
+  color: rgb(255 255 255 / 90%);
   font-size: 1.7rem;
   white-space: nowrap;
 }
 
 .nav_item_category {
-  color: rgb(255, 255, 255, 0.9);
+  color: rgb(255 255 255 / 90%);
   font-size: 1.7rem;
   position: relative;
   display: flex;
   align-items: center;
-  cursor: default;
   background-color: transparent;
   border: none;
   cursor: pointer;
-}
-
-.nav_item_category::after,
-.language_button::after,
-.profile_button::after {
-  content: '';
-  width: 0;
-  height: 0;
-  transform: translateY(50%) rotate(0deg);
-  border: 0.45rem solid transparent;
-  border-color: white transparent transparent transparent;
-  margin-left: 0.9rem;
-  display: inline-block;
-}
-
-.nav_item_category:hover::after,
-.language_button:hover::after,
-.profile_button:hover::after {
-  border: 0.45rem solid transparent;
-  border-color: transparent transparent white transparent;
-  transform: none;
 }
 
 .header_right {
@@ -83,11 +61,9 @@
 
 .free_trial_ancor {
   text-decoration: none;
-  color: rgb(255, 255, 255, 0.9);
+  color: rgb(255 255 255 / 90%);
   font-size: 1.7rem;
   background-color: #0f79af;
-  -webkit-transition: background-color 400ms;
-  -ms-transition: background-color 400ms;
   transition: background-color 400ms;
   border-radius: 0.3rem;
   padding: 0.875rem 1.9rem;
@@ -109,22 +85,16 @@
 }
 
 .search_icon {
-  color: rgb(255, 255, 255, 0.8);
+  color: rgb(255 255 255 / 80%);
   font-size: 2.5rem;
   display: flex;
-}
-
-.search_button:hover > .search_icon,
-.profile_button:hover > .profile_icon,
-.language_button:hover {
-  color: #fff;
 }
 
 .language_button {
   background-color: transparent;
   border: none;
   cursor: pointer;
-  color: rgb(255, 255, 255, 0.8);
+  color: rgb(255 255 255 / 80%);
   display: flex;
   align-items: center;
   gap: 0.8rem;
@@ -139,10 +109,6 @@
   font-size: 1.7rem;
 }
 
-.language_button::after {
-  margin-left: 0.4rem;
-}
-
 .profile_button {
   background-color: transparent;
   border: none;
@@ -154,5 +120,36 @@
 
 .profile_icon {
   font-size: 2.5rem;
-  color: rgb(255, 255, 255, 0.8);
+  color: rgb(255 255 255 / 80%);
+}
+
+.language_button::after {
+  margin-left: 0.4rem;
+}
+
+.search_button:hover > .search_icon,
+.profile_button:hover > .profile_icon,
+.language_button:hover {
+  color: #fff;
+}
+
+.nav_item_category::after,
+.language_button::after,
+.profile_button::after {
+  content: '';
+  width: 0;
+  height: 0;
+  transform: translateY(50%) rotate(0deg);
+  border: 0.45rem solid transparent;
+  border-color: white transparent transparent;
+  margin-left: 0.9rem;
+  display: inline-block;
+}
+
+.nav_item_category:hover::after,
+.language_button:hover::after,
+.profile_button:hover::after {
+  border: 0.45rem solid transparent;
+  border-color: transparent transparent white;
+  transform: none;
 }

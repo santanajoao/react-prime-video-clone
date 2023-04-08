@@ -21,9 +21,3 @@ O projeto foi desenvolvido antes da última atualização do primevideo e por fa
 - CSS Modules
 - React Icons
 - Custom Hooks
-
-## Veja você mesmo
-
-Acesse o deploy da aplicação nesse link:
-
-**[https://react-primevideo-clone.vercel.app/](https://react-primevideo-clone.vercel.app/)**

@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import { BiSearch } from 'react-icons/bi';
 import { BsGlobe2 } from 'react-icons/bs';
@@ -53,9 +54,6 @@ export default function Header() {
               id="search-input"
               className={styles.search_input}
             />
-            {/*
-              eslint-disable-next-line jsx-a11y/label-has-associated-control
-            */}
             <label htmlFor="search-input" className={styles.search_input_label}>
               Busca
             </label>

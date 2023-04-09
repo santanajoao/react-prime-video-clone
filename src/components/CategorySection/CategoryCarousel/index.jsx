@@ -20,6 +20,16 @@ export default function CategoryCarousel({ movies }) {
   // se alterar aqui vvvvv mude também no css
   const imagesWidth = 300;
 
+  function checkTranslate(value) {
+    if (value < 0) {
+      setTranslate(0);
+    } else if (value > maxTranslate) {
+      setTranslate(maxTranslate);
+    } else {
+      setTranslate(value || 0);
+    }
+  }
+
   function focusOnCard(index) {
     let newTranslate = imagesWidth * index;
     if (newTranslate > maxTranslate) {
@@ -36,13 +46,12 @@ export default function CategoryCarousel({ movies }) {
     const howManyImagesFit = Math.trunc(translateSum / imagesWidth);
 
     const newTranslate = howManyImagesFit * imagesWidth;
-    if (newTranslate < 0) {
-      setTranslate(0);
-    } else if (newTranslate > maxTranslate) {
-      setTranslate(maxTranslate);
-    } else {
-      setTranslate(newTranslate || 0);
-    }
+    checkTranslate(newTranslate);
+  }
+
+  function handleWheel(event) {
+    const difference = translate + event.deltaX;
+    checkTranslate(difference);
   }
 
   const listStyle = { transform: `translateX(-${translate}px)` };
@@ -67,7 +76,12 @@ export default function CategoryCarousel({ movies }) {
         />
       )}
 
-      <ol style={listStyle} ref={elementRef} className={styles.movie_list}>
+      <ol
+        style={listStyle}
+        ref={elementRef}
+        onWheel={handleWheel}
+        className={styles.movie_list}
+      >
         {movies.map((movie, index) => (
           <li key={movie.id}>
             <MovieCard

@@ -4,13 +4,15 @@ import { fetchMoviesByGenres } from '../../services/movies';
 import CategoryCarousel from './CategoryCarousel';
 import CategoryHeader from './CategoryHeader';
 import styles from './style.module.css';
+import getMoviesWithThumb from '../../helpers/movies';
 
 export default function CategorySection({ title, genre }) {
   const [movies, setMovies] = useState([]);
 
   async function fetchGenre() {
     const results = await fetchMoviesByGenres(genre);
-    setMovies(results);
+    const moviesWithThumbs = getMoviesWithThumb(results);
+    setMovies(moviesWithThumbs);
   }
 
   useEffect(() => {

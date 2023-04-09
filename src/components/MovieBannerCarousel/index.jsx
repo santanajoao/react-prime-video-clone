@@ -35,7 +35,7 @@ export default function MovieBannerCarousel() {
 
   const firstIsNotSelected = selected !== MIN_SELECTION;
   const lastIsNotSelected = selected !== NUMBER_OF_MOVIES_DISPLAYED - 1;
-  const movieStyle = `translate(-${selected * 100}%)`;
+  const movieStyle = `translateX(-${selected * 100}vw)`;
 
   return (
     <div className={styles.carousel}>
@@ -72,9 +72,9 @@ export default function MovieBannerCarousel() {
         ))}
       </div>
 
-      <ol className={styles.movie_list}>
+      <ol className={styles.movie_list} style={{ transform: movieStyle }}>
         {movies.map((movie, index) => (
-          <li key={movie.id} style={{ transform: movieStyle }}>
+          <li key={movie.id}>
             <ConditionalAncor
               shouldRender={index === selected}
               href="#link-to-movie"

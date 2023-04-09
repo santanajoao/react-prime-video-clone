@@ -4,8 +4,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   height: 20vw;
+  overflow: hidden;
 }
 
 .left_button,
@@ -51,11 +51,7 @@
 }
 
 .right_button::after {
-  background-image: linear-gradient(
-    to left,
-    rgb(0 0 0 / 20%) 35%,
-    transparent
-  );
+  background-image: linear-gradient(to left, rgb(0 0 0 / 20%) 35%, transparent);
 }
 
 .right_button:hover::after,
@@ -64,6 +60,8 @@
 }
 
 .radios_wrapper {
+  left: 50%;
+  transform: translateX(-50%);
   position: absolute;
   bottom: 0;
   display: flex;
@@ -93,15 +91,14 @@
 }
 
 .movie_list {
-  width: 100%;
+  width: fit-content;
   display: flex;
-  overflow: hidden;
+  flex-wrap: nowrap;
+  transition: transform 500ms;
 }
 
 .movie_list > li {
   list-style: none;
-  transform: translate(0);
-  transition: transform 500ms;
 }
 
 .movie_image {

@@ -83,7 +83,7 @@ export default function CategoryCarousel({ movies }) {
           <li key={movie.id}>
             <MovieCard
               onFocus={() => focusOnCard(index)}
-              image={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}
+              image={`https://image.tmdb.org/t/p/w400/${movie.backdrop_path}`}
               title={movie.title || movie.original_title || movie.original_name}
               description={movie.overview}
               releaseYear={movie.release_date?.slice(0, 4)}

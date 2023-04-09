@@ -82,7 +82,7 @@ export default function MovieBannerCarousel() {
               <img
                 src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
                 className={styles.movie_image}
-                alt={movie.title}
+                alt={movie.title || movie.original_title || movie.original_name}
               />
             </ConditionalAncor>
           </li>

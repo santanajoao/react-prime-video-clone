@@ -5,7 +5,9 @@ import ArrowButton from '../../ArrowButton';
 import MovieCard from '../MovieCard';
 import styles from './style.module.css';
 
-const padding = 50;
+// se alterar aqui vvvvv mude também no css
+const PADDING = 50;
+const IMAGES_WIDTH = 300;
 
 export default function CategoryCarousel({ movies }) {
   const [translate, setTranslate] = useState(0);
@@ -15,10 +17,7 @@ export default function CategoryCarousel({ movies }) {
     getDimensions();
   }, [movies]);
 
-  const maxTranslate = dimensions.scrollWidth - dimensions.width + padding;
-
-  // se alterar aqui vvvvv mude também no css
-  const imagesWidth = 300;
+  const maxTranslate = dimensions.scrollWidth - dimensions.width + PADDING;
 
   function checkTranslate(value) {
     if (value < 0) {
@@ -31,11 +30,7 @@ export default function CategoryCarousel({ movies }) {
   }
 
   function focusOnCard(index) {
-    let newTranslate = imagesWidth * index;
-    if (newTranslate > maxTranslate) {
-      newTranslate = maxTranslate;
-    }
-    setTranslate(newTranslate);
+    checkTranslate(IMAGES_WIDTH * index);
   }
 
   function moveCarousel(direction) {
@@ -43,15 +38,17 @@ export default function CategoryCarousel({ movies }) {
 
     const difference = direction === 'left' ? -width : width;
     const translateSum = difference + translate;
-    const howManyImagesFit = Math.trunc(translateSum / imagesWidth);
+    const howManyImagesFit = Math.trunc(translateSum / IMAGES_WIDTH);
 
-    const newTranslate = howManyImagesFit * imagesWidth;
+    const newTranslate = howManyImagesFit * IMAGES_WIDTH;
     checkTranslate(newTranslate);
   }
 
   function handleWheel(event) {
-    const difference = translate + event.deltaX;
-    checkTranslate(difference);
+    if (event.deltaX !== 0) {
+      const difference = translate + event.deltaX;
+      checkTranslate(difference);
+    }
   }
 
   const listStyle = { transform: `translateX(-${translate}px)` };

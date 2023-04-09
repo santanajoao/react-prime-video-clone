@@ -40,7 +40,7 @@ Insira sua KEY da API TheMovieDB na linha um do arquivo `src/services/movies.js`
 
 ```
 // Substitua o texto dentro dos parenteses por sua chave
-const API_KEY = '**YOUR_API_KEY**'
+const API_KEY = 'YOUR_API_KEY'
 ```
 <details>
   <summary>Não tem uma chave da API?</summary>

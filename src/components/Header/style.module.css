@@ -90,7 +90,7 @@
   right: 0;
   cursor: pointer;
   color: transparent;
-  transition: border-color 500ms;
+  transition: border-color 400ms, background-color 350ms;
   padding: 0 1rem;
 }
 
@@ -102,7 +102,7 @@
   align-items: center;
   display: flex;
   padding: 0 1rem;
-  transition: width 200ms;
+  transition: width 300ms;
   cursor: pointer;
 }
 
@@ -129,7 +129,6 @@
   .search_input:focus {
     color: rgb(255 255 255 / 90%);
     border: 1px solid white;
-    transition: width 200ms;
     cursor: text;
     font-size: 1.6rem;
     background-color: #0f171e;

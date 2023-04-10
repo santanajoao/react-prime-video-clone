@@ -15,6 +15,7 @@
   color: #fff;
   font-size: 3.5rem;
   transition: background-color 300ms;
+  filter: drop-shadow(0 0.2rem 0.4rem rgb(0 0 0));
 }
 
 .left_button {

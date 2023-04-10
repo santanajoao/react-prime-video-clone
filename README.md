@@ -13,6 +13,7 @@ O projeto foi desenvolvido antes da última atualização do primevideo e por fa
 - Atualizar para a nova versão do primevideo
 - Design responsivo para smartphones e tablets
 - Adicionar funcionalidades dos elementos do Header (Categorias, Linguagem, Perfil)
+- Substituir o seletor :has por uma forma suportada pelo navegador Firefox
 
 ## Tecnologias utilizadas
 
@@ -23,6 +24,8 @@ O projeto foi desenvolvido antes da última atualização do primevideo e por fa
 - Custom Hooks
 
 ## Como executar o projeto
+
+:exclamation: A barra de pesquisa não funciona no navegador *Firefox*. Foi utilizado o seletor css :has que não é suportado pelo firefox. Uma forma alternativa será implementada futuramente :exclamation:
 
 Faça o clone do repositório
 

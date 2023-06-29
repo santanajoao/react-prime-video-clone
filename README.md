@@ -1,10 +1,16 @@
 # React Primevideo Clone
 
-Clone do website do primevideo desenvolvido com ReactJS
+Clone front-end do website do primevideo desenvolvido com ReactJS
 
 <img src="./readme-assets/app-screenshot.png" alt="Captura de tela da aplicação funcionando">
 
 ---
+
+## O que é
+
+O projeto é uma aplicação front-end que visa replicar o layout e efeitos de interação do primevideo. Os dados de filmes exibidos são consumidos da API TheMovieDB
+
+> :warning: Esse era o layout quando o projeto foi desenvolvido e atualmente o site da primevideo passou por atualizações em seu design.
 
 ## Futuros passos e melhorias
 
@@ -63,4 +69,4 @@ Inicie o servidor de desenvolvimento:
 npm run dev
 ```
 
-Agora é só acessar o servidor local que é exibido no terminal ou apertar a tecla `o`!
+Agora é só acessar o link do servidor local que é exibido no terminal ou apertar a tecla `o`!

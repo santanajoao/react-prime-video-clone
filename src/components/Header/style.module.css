@@ -80,49 +80,48 @@
   background-color: #36b0ee;
 }
 
-.search_input {
-  position: absolute;
-  background-color: transparent;
-  height: 100%;
-  border: 1px solid transparent;
-  border-radius: 0.3rem;
-  width: 100%;
-  right: 0;
-  cursor: pointer;
-  color: transparent;
-  transition: border-color 400ms, background-color 350ms;
-  padding: 0 1rem;
+.search_wrapper {
+  position: relative;
 }
 
-.search_input_wrapper {
+.search_input {
+  font-size: 1.6rem;
+  color: white;
+  position: absolute;
+  height: 100%;
   width: 12%;
   right: 0;
-  position: absolute;
-  height: 100%;
-  align-items: center;
-  display: flex;
-  padding: 0 1rem;
-  transition: width 300ms;
-  cursor: pointer;
+  border: 1px solid white;
+  border-radius: 5px;
+  background-color: transparent;
+  background-color: #0f171e;
+  background-image: linear-gradient(180deg, #1b2530 0, rgb(27 37 48 / 85%));
+  opacity: 0;
+  width: 0;
+  padding: 0;
+  transition: width 300ms, opacity 300ms;
 }
 
-.search_input_label {
-  position: relative;
-  font-size: 1.6rem;
-  z-index: 20;
-  transition: color 300ms ease-out;
-  border: 0;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
+.search_input::placeholder {
+  color: inherit;
+}
+
+.search_input:focus {
+  padding: 0 1rem;
+  width: 100%;
+  opacity: 100%;
+  top: 0;
+}
+
+.search_icon {
+  color: rgb(255 255 255 / 80%);
+  font-size: 2.5rem;
+  display: flex;
+  cursor: pointer;
 }
 
 @supports selector(:has(.search_input:focus)) {
-  .search_input_wrapper:has(.search_input:focus) {
+  /* .search_input_wrapper:has(.search_input:focus) {
     width: 100%;
   }
 
@@ -144,14 +143,7 @@
 
   .search_input:valid + .search_input_label {
     color: transparent;
-  }
-}
-
-.search_icon {
-  color: rgb(255 255 255 / 80%);
-  font-size: 2.5rem;
-  display: flex;
-  cursor: pointer;
+  } */
 }
 
 .language_button {

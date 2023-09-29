@@ -47,19 +47,19 @@ export default function Header() {
             Experimente grátis
           </a>
 
-          <div className={styles.search_input_wrapper}>
-            <input
-              type="text"
-              required
-              id="search-input"
-              className={styles.search_input}
-            />
-            <label htmlFor="search-input" className={styles.search_input_label}>
-              Busca
-            </label>
-          </div>
+          <input
+            type="text"
+            required
+            id="search-input"
+            placeholder="Buscar"
+            className={styles.search_input}
+          />
 
-          <BiSearch className={styles.search_icon} />
+          <label htmlFor="search-input" className={styles.search_input_label}>
+            <span className="screen-readers-only">Busca</span>
+            <BiSearch className={styles.search_icon} />
+          </label>
+
         </div>
 
         <TextLessButton

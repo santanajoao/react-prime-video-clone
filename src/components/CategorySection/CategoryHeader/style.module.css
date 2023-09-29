@@ -2,7 +2,7 @@
   display: flex;
   gap: 1rem;
   align-items: center;
-  margin-left: 5rem;
+  margin-left: 2rem;
 }
 
 .prime_logo {
@@ -24,6 +24,12 @@
 
 .category_ancor:hover {
   color: rgb(144 223 254);
+}
+
+@media screen and (min-width: 400px) {
+  .header {
+    margin-left: 5rem;
+  }
 }
 
 @media screen and (min-width: 470px) {

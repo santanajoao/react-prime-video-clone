@@ -36,7 +36,7 @@
   width: 100%;
   gap: 1rem;
   scroll-behavior: smooth;
-  padding: 0 5rem;
+  padding: 0 2rem;
   -ms-overflow-style: none;
   scrollbar-width: none;
   transition: transform 400ms;
@@ -48,4 +48,10 @@
 
 .movie_list > li {
   list-style: none;
+}
+
+@media screen and (min-width: 400px) {
+  .movie_list {
+    padding: 0 5rem;
+  }
 }

@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 22vw;
+  height: 25rem;
   overflow: hidden;
 }
 
@@ -95,14 +95,22 @@
   display: flex;
   flex-wrap: nowrap;
   transition: transform 500ms;
+  height: 100%;
 }
 
 .movie_list > li {
   list-style: none;
+  height: 100%;
 }
 
 .movie_image {
   width: 100vw;
-  height: 22vw;
+  height: 100%;
   object-fit: cover;
+}
+
+@media screen and (min-width: 900px) {
+  .carousel {
+    height: 27vw;
+  }
 }

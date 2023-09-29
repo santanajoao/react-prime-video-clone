@@ -2,10 +2,10 @@
   background-color: #0f171e;
   background-image: linear-gradient(180deg, #1b2530 0, rgb(27 37 48 / 85%));
   display: flex;
-  padding: 1.6rem 4.8rem;
   align-items: center;
-  gap: 3rem;
   justify-content: space-between;
+  gap: 2rem;
+  padding: 1rem 2rem;
 }
 
 .header_left {
@@ -14,12 +14,12 @@
 }
 
 .primevideo_logo {
-  width: 11.2rem;
+  width: 7rem;
 }
 
 .nav {
-  display: flex;
   align-self: center;
+  display: none;
 }
 
 .links_list {
@@ -55,7 +55,7 @@
 }
 
 .search_wrapper {
-  gap: 1.6rem;
+  gap: 1rem;
   display: flex;
   position: relative;
   align-items: center;
@@ -64,12 +64,12 @@
 .free_trial_ancor {
   text-decoration: none;
   color: rgb(255 255 255 / 90%);
-  font-size: 1.7rem;
   background-color: #0f79af;
   transition: background-color 400ms;
   border-radius: 0.3rem;
-  padding: 0.875rem 1.9rem;
   white-space: nowrap;
+  font-size: 1.2rem;
+  padding: 0.875rem 1rem;
 }
 
 .free_trial_ancor:hover {
@@ -85,7 +85,6 @@
 }
 
 .search_input {
-  font-size: 1.6rem;
   color: white;
   position: absolute;
   height: 100%;
@@ -100,6 +99,7 @@
   width: 0;
   padding: 0;
   transition: width 300ms, opacity 300ms;
+  font-size: 1.4rem;
 }
 
 .search_input::placeholder {
@@ -115,35 +115,9 @@
 
 .search_icon {
   color: rgb(255 255 255 / 80%);
-  font-size: 2.5rem;
   display: flex;
   cursor: pointer;
-}
-
-@supports selector(:has(.search_input:focus)) {
-  /* .search_input_wrapper:has(.search_input:focus) {
-    width: 100%;
-  }
-
-  .search_input:focus {
-    color: rgb(255 255 255 / 90%);
-    border: 1px solid white;
-    cursor: text;
-    font-size: 1.6rem;
-    background-color: #0f171e;
-    background-image: linear-gradient(180deg, #1b2530 0, rgb(27 37 48 / 85%));
-  }
-
-  .search_input:focus + .search_input_label {
-    color: rgb(255 255 255 / 90%);
-    width: auto;
-    height: auto;
-    clip: auto;
-  }
-
-  .search_input:valid + .search_input_label {
-    color: transparent;
-  } */
+  font-size: 2rem;
 }
 
 .language_button {
@@ -151,10 +125,10 @@
   border: none;
   cursor: pointer;
   color: rgb(255 255 255 / 80%);
-  display: flex;
   align-items: center;
   gap: 0.8rem;
   position: relative;
+  display: none;
 }
 
 .language_icon {
@@ -169,9 +143,9 @@
   background-color: transparent;
   border: none;
   cursor: pointer;
-  display: flex;
   align-items: center;
   position: relative;
+  display: none;
 }
 
 .profile_icon {
@@ -211,4 +185,42 @@
   border: 0.45rem solid transparent;
   border-color: transparent transparent white;
   transform: none;
+}
+
+@media screen and (min-width: 600px) {
+  .header {
+    padding: 1.6rem 4.8rem;
+    gap: 3rem;
+  }
+
+  .primevideo_logo {
+    width: 11.2rem;
+  }
+
+  .free_trial_ancor {
+    font-size: 1.7rem;
+    padding: 0.875rem 1.9rem;
+  }
+
+  .search_input {
+    font-size: 1.6rem;
+  }
+  
+  .search_icon {
+    font-size: 2.5rem;
+  }
+
+  .language_button {
+    display: flex;
+  }
+
+  .profile_button {
+    display: flex;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .nav {
+    display: flex;
+  }
 }

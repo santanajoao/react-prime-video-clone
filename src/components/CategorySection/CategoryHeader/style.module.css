@@ -6,11 +6,11 @@
 }
 
 .prime_logo {
-  height: 2.4rem;
+  height: 2rem;
 }
 
 .category_title {
-  font-size: 1.9rem;
+  font-size: 1.6rem;
   color: #fff;
 }
 
@@ -24,4 +24,14 @@
 
 .category_ancor:hover {
   color: rgb(144 223 254);
+}
+
+@media screen and (min-width: 470px) {
+  .category_title {
+    font-size: 1.9rem;
+  }
+
+  .prime_logo {
+    height: 2.4rem;
+  }
 }

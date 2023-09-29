@@ -24,6 +24,7 @@ export default function Footer() {
         <small className={styles.copyright}>
           &copy;
           <span aria-hidden="true">1996-2023</span>
+          &nbsp;
           <span className="screen-readers-only"> de 1996 a 2023</span>
           Amazon.com, Inc. ou suas afiliadas
         </small>

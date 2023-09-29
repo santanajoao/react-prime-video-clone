@@ -10,17 +10,19 @@
 }
 
 .nav_and_copyright {
-  margin-top: 0.7rem;
+  margin-top: 2rem;
   display: flex;
   align-items: center;
   gap: 0.6rem 1.5rem;
-  flex-wrap: wrap;
   justify-content: center;
+  flex-direction: column;
+  text-align: center;
 }
 
 .ancor_list {
   display: flex;
-  gap: 1.5rem;
+  gap: 0.5rem;
+  flex-direction: column;
 }
 
 .ancor_list > li {
@@ -41,4 +43,22 @@
 .copyright {
   font-size: 1.5rem;
   color: #8197a4;
+  margin-top: 1rem;
+}
+
+@media screen and (min-width: 780px) {
+  .nav_and_copyright {
+    margin-top: 0.7rem;
+    flex-direction: row;
+    text-align: left;
+  }
+
+  .ancor_list {
+    flex-direction: row;
+    gap: 1.5rem;
+  }
+
+  .copyright {
+    margin-top: 0;
+  }
 }
